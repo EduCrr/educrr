@@ -56,3 +56,19 @@ button {
   cursor: pointer;
   color: white;
 }
+
+.show-infos {
+  transition: all ease 0.6s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  height: 100vh;
+  background-color: #242c2e;
+}

@@ -16,12 +16,20 @@ export const HomeArea = styled.div`
       justify-content: flex-start;
       align-items: end;
       .inside {
-        padding: 30px 0px;
+        padding: 25px 0px;
         background-color: #242c2e;
         width: 50%;
-        text-align: center;
-        font-size: 40px;
+        font-size: 35px;
         font-weight: bold;
+        text-align: center;
+        .desc {
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+        }
+        small {
+          font-size: 17px;
+        }
       }
     }
   }
@@ -130,7 +138,7 @@ export const HomeArea = styled.div`
   .contact {
     height: 80vh;
     width: 100%;
-    background-image: linear-gradient(rgba(2, 2, 2, 0.5), rgba(2, 2, 2, 0.5)),
+    background-image: linear-gradient(rgba(2, 2, 2, 0.3), rgba(2, 2, 2, 0.3)),
       url("/assets/fundo5.jpg");
     background-position: bottom;
     background-repeat: no-repeat;
@@ -143,6 +151,45 @@ export const HomeArea = styled.div`
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      button {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .inputs-email {
+    width: 35%;
+    z-index: 999;
+    opacity: ${(props) => (props.open ? "1" : "0")};
+    width: ${(props) => (props.open ? "35%" : "0%")};
+    z-index: ${(props) => (props.open ? "999" : "-1")};
+
+    input,
+    textarea {
+      font-family: "Readex Pro", sans-serif;
+      font-weight: bold;
+      width: 80%;
+      cursor: pointer;
+      margin-bottom: 20px;
+      border: 0px;
+      outline: 0;
+      background-color: #5b916f;
+      padding: 20px;
+      color: white;
+      ::placeholder {
+        color: white;
+      }
+    }
+    textarea {
+      resize: none;
+    }
+    input,
+    textarea,
+    button,
+    svg,
+    i {
+      transition: all ease 0.4s;
+      opacity: ${(props) => (props.open ? "1" : "0")};
     }
   }
 `;

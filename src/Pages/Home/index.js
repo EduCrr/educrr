@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { HomeArea } from "./styled";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import Close from "@material-ui/icons/Close";
+import { OpenContext } from "../../OpenContext";
 export default function Home() {
+  const { setOpen } = useContext(OpenContext);
+  const [openForm, setOpenForm] = useState(false);
   const [icons, setIcons] = useState([
     { title: "Html", icon: "/assets/html.png" },
     { title: "Css", icon: "/assets/css.png" },
-    { title: "Js", icon: "/assets/js.png" },
+    { title: "JavaScript", icon: "/assets/js.png" },
     { title: "TypeScript", icon: "/assets/type.jpg" },
     { title: "React Js", icon: "/assets/react.png" },
     { title: "Sass", icon: "/assets/sass.png" },
@@ -75,11 +79,20 @@ export default function Home() {
     768: { items: 1 },
     1024: { items: 1 },
   };
+  function handleOpenForm() {
+    setOpenForm(!openForm);
+    setOpen(false);
+  }
   return (
-    <HomeArea>
+    <HomeArea open={openForm} onClick={() => setOpen(false)}>
       <div className="slider-primary">
         <div className="slider-text">
-          <div className="inside">Front-End Developer</div>
+          <div className="inside">
+            <div className="desc">
+              <small>Eduardo Carraro</small>
+              Front-End Developer
+            </div>
+          </div>
         </div>
       </div>
 
@@ -96,13 +109,13 @@ export default function Home() {
       </section>
       <section className="photos">
         <div className="photo">
-          <img src="https://images.unsplash.com/photo-1531850629230-0496c86d6d23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+          <img src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+        </div>
+        <div className="photo">
+          <img src="/assets/inovation.jpg" />
         </div>
         <div className="photo">
           <img src="/assets/smoke.jpg" />
-        </div>
-        <div className="photo">
-          <img src="https://images.unsplash.com/photo-1589194837807-30a2f9540ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
         </div>
       </section>
       <section className="hab">
@@ -135,9 +148,22 @@ export default function Home() {
       <section className="contact">
         <div className="contact-area">
           <h2>Lorem ipsum dolor sit amet,</h2>
-          <button>Entra em contato</button>
+          <button onClick={handleOpenForm}>Entre em contato</button>
         </div>
       </section>
+      <div className="show-infos inputs-email">
+        <Close
+          style={{ fontSize: "35px", cursor: "pointer" }}
+          onClick={() => setOpenForm(false)}
+        />
+        <form>
+          <input placeholder="Nome" type="text" />
+          <input placeholder="Nome" type="text" />
+          <input placeholder="Nome" type="text" />
+          <textarea rows="5" placeholder="Mensagem"></textarea>
+          <button type="submit">Enviar contato</button>
+        </form>
+      </div>
     </HomeArea>
   );
 }
