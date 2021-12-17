@@ -18,8 +18,7 @@ export const HeaderArea = styled.header`
     }
   }
   .menu-area {
-    opacity: ${(props) => (props.open ? "1" : "0")};
-    width: ${(props) => (props.open ? "35%" : "0%")};
+    width: 35%;
     z-index: ${(props) => (props.open ? "999" : "-1")};
 
     ul {
@@ -40,11 +39,6 @@ export const HeaderArea = styled.header`
         transition: all ease 0.3s;
       }
     }
-  }
-  .close,
-  .icons,
-  ul {
-    opacity: ${(props) => (props.open ? "1" : "0")};
   }
   .icons {
     a {

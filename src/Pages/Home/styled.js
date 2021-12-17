@@ -183,9 +183,6 @@ export const HomeArea = styled.div`
 
   .inputs-email {
     width: 35%;
-    z-index: 999;
-    opacity: ${(props) => (props.open ? "1" : "0")};
-    width: ${(props) => (props.open ? "35%" : "0%")};
     z-index: ${(props) => (props.open ? "999" : "-1")};
 
     input,
@@ -217,7 +214,6 @@ export const HomeArea = styled.div`
     svg,
     i {
       transition: all ease 0.4s;
-      opacity: ${(props) => (props.open ? "1" : "0")};
     }
     button {
       background-color: #182022;
@@ -230,7 +226,6 @@ export const HomeArea = styled.div`
     justify-content: center;
     align-items: center;
     margin: 0px 10px;
-    opacity: ${(props) => (props.open ? "1" : "0")};
     svg {
       font-size: 30px;
     }

@@ -7,6 +7,8 @@ import Close from "@material-ui/icons/Close";
 import { OpenContext } from "../../OpenContext";
 import Modal from "../../components/Modal";
 import Fade from "react-reveal/Fade";
+import Bounce from "react-reveal/Bounce";
+
 export default function Home() {
   const { setOpen } = useContext(OpenContext);
   const [openForm, setOpenForm] = useState(false);
@@ -187,24 +189,26 @@ export default function Home() {
           </div>
         </section>
       </Fade>
-      <div className="show-infos inputs-email">
-        <Close
-          style={{ fontSize: "35px", cursor: "pointer" }}
-          onClick={() => setOpenForm(false)}
-        />
-        <form>
-          <input required placeholder="Nome" type="text" />
-          <input required placeholder="Email" type="email" />
-          <input required placeholder="Telefone" type="text" />
-          <textarea required rows="5" placeholder="Mensagem"></textarea>
-          <button type="submit">Enviar contato</button>
-        </form>
-        <div className="phone">
-          <h2>
-            <WhatsApp /> (54) 99104-6763
-          </h2>
+      <Bounce right when={openForm}>
+        <div className="show-infos inputs-email">
+          <Close
+            style={{ fontSize: "35px", cursor: "pointer" }}
+            onClick={() => setOpenForm(false)}
+          />
+          <form>
+            <input required placeholder="Nome" type="text" />
+            <input required placeholder="Email" type="email" />
+            <input required placeholder="Telefone" type="text" />
+            <textarea required rows="5" placeholder="Mensagem"></textarea>
+            <button type="submit">Enviar contato</button>
+          </form>
+          <div className="phone">
+            <h2>
+              <WhatsApp /> (54) 99104-6763
+            </h2>
+          </div>
         </div>
-      </div>
+      </Bounce>
       <Modal data={modalItem} close={setOpenModal} open={openModal} />
     </HomeArea>
   );
