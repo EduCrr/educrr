@@ -2,9 +2,9 @@ import React from "react";
 import { ModalArea } from "./styled";
 import GitHub from "@material-ui/icons/GitHub";
 import Close from "@material-ui/icons/Close";
-export default function Modal({ data, close }) {
+export default function Modal({ data, close, open }) {
   return (
-    <ModalArea>
+    <ModalArea open={open}>
       <div class="modal">
         <div onClick={() => close(false)} className="close-modal">
           <Close />

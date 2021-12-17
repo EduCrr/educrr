@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HomeArea = styled.div`
+  overflow-x: hidden;
   .slider-primary {
     height: 100vh;
     width: 100%;
@@ -55,7 +56,8 @@ export const HomeArea = styled.div`
     position: relative;
     .photo {
       width: 33%;
-      transform: scale(0.9);
+      transform: scale(0.9) !important;
+      transition: all ease 0.4s !important;
       img {
         height: 550px;
         object-fit: cover;

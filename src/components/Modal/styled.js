@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const ModalArea = styled.div`
   .modal {
+    opacity: ${(props) => (props.open ? "1" : "0")};
+    z-index: ${(props) => (props.open ? "9999" : "-99")};
+    transition: all ease 0.4s;
     overflow: hidden;
     overflow-y: scroll;
     position: fixed;
@@ -18,7 +21,6 @@ export const ModalArea = styled.div`
     padding: 6rem;
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-    z-index: 9999;
     h4 {
       margin-bottom: 45px;
     }
@@ -61,6 +63,8 @@ export const ModalArea = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
-    z-index: 5;
+    transition: all ease 0.4s;
+    opacity: ${(props) => (props.open ? "1" : "0")};
+    z-index: ${(props) => (props.open ? "5" : "-100")};
   }
 `;

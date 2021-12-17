@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { HomeArea } from "./styled";
 import AliceCarousel from "react-alice-carousel";
 import WhatsApp from "@material-ui/icons/WhatsApp";
@@ -6,6 +6,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import Close from "@material-ui/icons/Close";
 import { OpenContext } from "../../OpenContext";
 import Modal from "../../components/Modal";
+import Fade from "react-reveal/Fade";
 export default function Home() {
   const { setOpen } = useContext(OpenContext);
   const [openForm, setOpenForm] = useState(false);
@@ -89,10 +90,12 @@ export default function Home() {
     768: { items: 1 },
     1024: { items: 1 },
   };
+
   function handleOpenForm() {
     setOpenForm(!openForm);
     setOpen(false);
   }
+
   return (
     <HomeArea open={openForm} onClick={() => setOpen(false)}>
       <div className="slider-primary">
@@ -105,52 +108,59 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Fade left duration={1700}>
+        <section className="about">
+          <div className="right-about">
+            <h1>Sobre</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </section>
+      </Fade>
 
-      <section className="about">
-        <div className="right-about">
-          <h1>Sobre</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-        </div>
-      </section>
       <section className="photos">
-        <div className="photo">
-          <img src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
-        </div>
-        <div className="photo">
-          <div class="container">
-            <img src="/assets/inovation.jpg" />
-            <div class="overlay">
-              <div class="center">
-                <h1>Inovação</h1>
+        <Fade right cascade duration={1500}>
+          <div className="photo">
+            <img src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+          </div>
+          <div className="photo">
+            <div class="container">
+              <img src="/assets/inovation.jpg" />
+              <div class="overlay">
+                <div class="center">
+                  <h1>Inovação</h1>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="photo">
-          <div class="container">
-            <img src="/assets/smoke.jpg" />
-            <div class="overlay">
-              <div class="center">
-                <h1>Criatividade</h1>
+
+          <div className="photo">
+            <div class="container">
+              <img src="/assets/smoke.jpg" />
+              <div class="overlay">
+                <div class="center">
+                  <h1>Criatividade</h1>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Fade>
       </section>
-      <section className="hab">
-        <AliceCarousel
-          mouseTracking
-          items={items}
-          disableDotsControls={true}
-          responsive={responsive}
-          controlsStrategy="alternate"
-        />
-      </section>
+      <Fade bottom duration={1500}>
+        <section className="hab">
+          <AliceCarousel
+            mouseTracking
+            items={items}
+            disableDotsControls={true}
+            responsive={responsive}
+            controlsStrategy="alternate"
+          />
+        </section>
+      </Fade>
       <section className="projects">
         <div className="left-side">
           <h1>Portfólio</h1>
@@ -169,12 +179,14 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="contact">
-        <div className="contact-area">
-          <h2>Lorem ipsum dolor sit amet,</h2>
-          <button onClick={handleOpenForm}>Entre em contato</button>
-        </div>
-      </section>
+      <Fade left duration={1500}>
+        <section className="contact">
+          <div className="contact-area">
+            <h2>Lorem ipsum dolor sit amet,</h2>
+            <button onClick={handleOpenForm}>Entre em contato</button>
+          </div>
+        </section>
+      </Fade>
       <div className="show-infos inputs-email">
         <Close
           style={{ fontSize: "35px", cursor: "pointer" }}
@@ -193,7 +205,7 @@ export default function Home() {
           </h2>
         </div>
       </div>
-      {openModal && <Modal data={modalItem} close={setOpenModal} />}
+      <Modal data={modalItem} close={setOpenModal} open={openModal} />
     </HomeArea>
   );
 }
