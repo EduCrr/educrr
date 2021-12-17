@@ -1,13 +1,18 @@
 import React, { useState, useContext } from "react";
 import { HomeArea } from "./styled";
 import AliceCarousel from "react-alice-carousel";
+import WhatsApp from "@material-ui/icons/WhatsApp";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Close from "@material-ui/icons/Close";
 import { OpenContext } from "../../OpenContext";
+import Modal from "../../components/Modal";
 export default function Home() {
   const { setOpen } = useContext(OpenContext);
   const [openForm, setOpenForm] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalItem, setModalItem] = useState({});
   const [icons, setIcons] = useState([
+    { title: "Conhecimentos", icon: "/assets/knowledge.png" },
     { title: "Html", icon: "/assets/html.png" },
     { title: "Css", icon: "/assets/css.png" },
     { title: "JavaScript", icon: "/assets/js.png" },
@@ -20,7 +25,7 @@ export default function Home() {
   ]);
   const [portfolio, setPortfolio] = useState([
     {
-      title: "Movie",
+      title: "E-Movie",
       image: "/assets/emovie.png",
       desc: "sdsa",
       tools: "react",
@@ -28,10 +33,10 @@ export default function Home() {
       git: "ss",
     },
     {
-      title: "Movie",
+      title: "House",
       image: "/assets/house.png",
       desc: "sdsa",
-      tools: "react",
+      tools: "React Js, Firebase",
       url: "ss",
       git: "ss",
     },
@@ -61,9 +66,14 @@ export default function Home() {
     </div>
   ));
 
+  function handleModal(item) {
+    setOpenModal(true);
+    setModalItem(item);
+  }
+
   let items2 = portfolio.map((item, k) => (
     <div className="port-area" key={k}>
-      <img src={item.image} />
+      <img onClick={() => handleModal(item)} src={item.image} />
     </div>
   ));
 
@@ -112,10 +122,24 @@ export default function Home() {
           <img src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
         </div>
         <div className="photo">
-          <img src="/assets/inovation.jpg" />
+          <div class="container">
+            <img src="/assets/inovation.jpg" />
+            <div class="overlay">
+              <div class="center">
+                <h1>Inovação</h1>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="photo">
-          <img src="/assets/smoke.jpg" />
+          <div class="container">
+            <img src="/assets/smoke.jpg" />
+            <div class="overlay">
+              <div class="center">
+                <h1>Criatividade</h1>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section className="hab">
@@ -157,13 +181,19 @@ export default function Home() {
           onClick={() => setOpenForm(false)}
         />
         <form>
-          <input placeholder="Nome" type="text" />
-          <input placeholder="Nome" type="text" />
-          <input placeholder="Nome" type="text" />
-          <textarea rows="5" placeholder="Mensagem"></textarea>
+          <input required placeholder="Nome" type="text" />
+          <input required placeholder="Email" type="email" />
+          <input required placeholder="Telefone" type="text" />
+          <textarea required rows="5" placeholder="Mensagem"></textarea>
           <button type="submit">Enviar contato</button>
         </form>
+        <div className="phone">
+          <h2>
+            <WhatsApp /> (54) 99104-6763
+          </h2>
+        </div>
       </div>
+      {openModal && <Modal data={modalItem} close={setOpenModal} />}
     </HomeArea>
   );
 }

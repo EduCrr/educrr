@@ -4,7 +4,10 @@ export const HomeArea = styled.div`
   .slider-primary {
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(2, 2, 2, 0.5), rgba(2, 2, 2, 0.5)),
+    background-image: linear-gradient(
+        rgba(17, 25, 27, 0.1),
+        rgba(17, 25, 27, 1)
+      ),
       url("/assets/fundo1.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -14,10 +17,11 @@ export const HomeArea = styled.div`
       height: inherit;
       display: flex;
       justify-content: flex-start;
-      align-items: end;
+      align-items: center;
       .inside {
         padding: 25px 0px;
-        background-color: #242c2e;
+        background-color: #11191b;
+        opacity: 0.9;
         width: 50%;
         font-size: 35px;
         font-weight: bold;
@@ -48,14 +52,27 @@ export const HomeArea = styled.div`
     margin: 4rem auto;
     display: flex;
     align-items: center;
-
+    position: relative;
     .photo {
       width: 33%;
+      transform: scale(0.9);
       img {
         height: 550px;
-        transform: scale(0.9);
         object-fit: cover;
         width: 100%;
+      }
+      .container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        .overlay {
+          height: 100%;
+          width: 100%;
+          &:hover {
+            opacity: 0.8;
+            background-color: #11191b;
+          }
+        }
       }
     }
   }
@@ -63,8 +80,11 @@ export const HomeArea = styled.div`
     margin: 4rem auto;
     height: 90vh;
     width: 100%;
-    background-image: linear-gradient(rgba(2, 2, 2, 0.3), rgba(2, 2, 2, 0.3)),
-      url("assets/fundo4.jpg");
+    background-image: linear-gradient(
+        rgba(17, 25, 27, 0.1),
+        rgba(17, 25, 27, 1)
+      ),
+      url("/assets/fundo4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -81,16 +101,14 @@ export const HomeArea = styled.div`
   }
 
   .hab-area {
-    background-color: #242c2e;
+    background-color: #11191b;
     display: flex;
     justify-content: flex-start;
     align-items: end;
     height: 90vh;
     width: 100%;
     transform: scale(0.9);
-    object-fit: cover;
     transition: all ease 0.3s;
-
     h1 {
       padding: 0px 20px;
       z-index: 1;
@@ -102,7 +120,7 @@ export const HomeArea = styled.div`
   }
   .alice-carousel .alice-carousel__next-btn-item,
   .alice-carousel__prev-btn-item {
-    background-color: #414748;
+    background-color: #182022;
     padding: 20px;
     span {
       margin-top: 20px;
@@ -131,6 +149,7 @@ export const HomeArea = styled.div`
           height: 500px;
           width: 100%;
           object-fit: none;
+          cursor: pointer;
         }
       }
     }
@@ -138,12 +157,15 @@ export const HomeArea = styled.div`
   .contact {
     height: 80vh;
     width: 100%;
-    background-image: linear-gradient(rgba(2, 2, 2, 0.3), rgba(2, 2, 2, 0.3)),
+    background-image: linear-gradient(
+        rgba(17, 25, 27, 0.4),
+        rgba(17, 25, 27, 1)
+      ),
       url("/assets/fundo5.jpg");
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 4rem auto;
+    margin: 4rem auto 2rem auto;
     .contact-area {
       height: inherit;
       width: inherit;
@@ -173,11 +195,15 @@ export const HomeArea = styled.div`
       margin-bottom: 20px;
       border: 0px;
       outline: 0;
-      background-color: #5b916f;
+      background-color: #182022;
       padding: 20px;
       color: white;
       ::placeholder {
         color: white;
+      }
+      &:hover {
+        background-color: #11191b;
+        border: 2px solid white;
       }
     }
     textarea {
@@ -190,6 +216,21 @@ export const HomeArea = styled.div`
     i {
       transition: all ease 0.4s;
       opacity: ${(props) => (props.open ? "1" : "0")};
+    }
+    button {
+      background-color: #182022;
+    }
+  }
+  .phone,
+  svg,
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+    opacity: ${(props) => (props.open ? "1" : "0")};
+    svg {
+      font-size: 30px;
     }
   }
 `;
