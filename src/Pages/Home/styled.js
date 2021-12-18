@@ -22,7 +22,8 @@ export const HomeArea = styled.div`
       .inside {
         padding: 25px 0px;
         background-color: #11191b;
-        opacity: 0.9;
+        opacity: 0.9 !important;
+        transition: all ease 0.4s;
         width: 50%;
         font-size: 35px;
         font-weight: bold;
@@ -38,9 +39,10 @@ export const HomeArea = styled.div`
       }
     }
   }
+
   .about {
     max-width: 1200px;
-    margin: 4rem auto;
+    margin: 6rem auto;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -50,7 +52,7 @@ export const HomeArea = styled.div`
   }
   .photos {
     max-width: 1200px;
-    margin: 4rem auto;
+    margin: 6rem auto;
     display: flex;
     align-items: center;
     position: relative;
@@ -79,7 +81,7 @@ export const HomeArea = styled.div`
     }
   }
   .hab {
-    margin: 4rem auto;
+    margin: 6rem auto;
     height: 90vh;
     width: 100%;
     background-image: linear-gradient(
@@ -135,7 +137,7 @@ export const HomeArea = styled.div`
     overflow-x: hidden;
     margin: auto;
     margin-top: 6rem;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,7 +169,7 @@ export const HomeArea = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 4rem auto 2rem auto;
+    margin: 6rem auto 2rem auto;
     .contact-area {
       height: inherit;
       width: inherit;
@@ -221,7 +223,7 @@ export const HomeArea = styled.div`
   }
   .phone,
   svg,
-  h2 {
+  h3 {
     display: flex;
     justify-content: center;
     align-items: center;

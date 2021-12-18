@@ -8,20 +8,22 @@ export default function Footer() {
   let ano = new Date();
   return (
     <FooterArea>
-      <Fade right duration={1500}>
+      <Fade right duration={900}>
         <div className="left-footer">
           <h3>Todos os direitos reservados {ano.getFullYear()}.</h3>
         </div>
       </Fade>
-      <Fade left duration={1500}>
+      <Fade left duration={900}>
         <div className="right-footer">
-          <a href="/">
+          <a href="https://github.com/EduCrr" target="_blank">
             <GitHub />
           </a>
-          <a href="/">
+
+          <a href="https://www.linkedin.com/in/educrr16/" target="_blank">
             <LinkedIn />
           </a>
-          <a href="/">
+
+          <a href="https://www.instagram.com/eduardo.dudis/" target="_blank">
             <Instagram />
           </a>
         </div>

@@ -37,30 +37,30 @@ export default function Header() {
             <ul onClick={() => setOpen(false)}>
               <div>
                 <li>
-                  <a href="/">Home</a>
+                  <a href="#home">Home</a>
                 </li>
                 <li>
-                  <a href="/">Sobre</a>
+                  <a href="#sobre">Sobre</a>
                 </li>
                 <li>
-                  <a href="/">Portfólio</a>
+                  <a href="#portfolio">Portfólio</a>
                 </li>
                 <li>
-                  <a href="/">Contato</a>
+                  <a href="#contato">Contato</a>
                 </li>
               </div>
             </ul>
           </nav>
           <div className="icons" onClick={() => setOpen(false)}>
-            <a href="/">
+            <a href="https://github.com/EduCrr" target="_blank">
               <GitHub />
             </a>
 
-            <a href="/">
+            <a href="https://www.linkedin.com/in/educrr16/" target="_blank">
               <LinkedIn />
             </a>
 
-            <a href="/">
+            <a href="https://www.instagram.com/eduardo.dudis/" target="_blank">
               <Instagram />
             </a>
           </div>

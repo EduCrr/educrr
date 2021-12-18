@@ -15,12 +15,13 @@ export default function Home() {
   const [openModal, setOpenModal] = useState(false);
   const [modalItem, setModalItem] = useState({});
   const [icons, setIcons] = useState([
-    { title: "Conhecimentos", icon: "/assets/knowledge.png" },
+    { title: "Conhecimento em:", icon: "/assets/knowledge.png" },
     { title: "Html", icon: "/assets/html.png" },
     { title: "Css", icon: "/assets/css.png" },
     { title: "JavaScript", icon: "/assets/js.png" },
     { title: "TypeScript", icon: "/assets/type.jpg" },
     { title: "React Js", icon: "/assets/react.png" },
+    { title: "Bootstrap ", icon: "/assets/bootstrap.png" },
     { title: "Sass", icon: "/assets/sass.png" },
     { title: "Webpack", icon: "/assets/webpack.png" },
     { title: "Git", icon: "/assets/git.png" },
@@ -31,42 +32,44 @@ export default function Home() {
       title: "E-Movie",
       image: "/assets/emovie.png",
       desc: "sdsa",
-      tools: "react",
-      url: "ss",
-      git: "ss",
+      tools: "React Js, styled-components, API, Reducer, Context.",
+      url: "http://edumoviee.epizy.com/",
+      git: "https://github.com/EduCrr/movies",
     },
     {
       title: "House",
       image: "/assets/house.png",
       desc: "sdsa",
-      tools: "React Js, Firebase",
-      url: "ss",
-      git: "ss",
+      tools: "React Js, Firebase, styled-components, Context.",
+      url: "http://eduhouse.epizy.com/",
+      git: "https://github.com/EduCrr/house",
     },
     {
       title: "Chair",
       image: "/assets/chair.png",
       desc: "sdsa",
-      tools: "react",
-      url: "ss",
-      git: "ss",
+      tools: "React Js, Firebase, styled-components, Context.",
+      url: "http://educhair.epizy.com/",
+      git: "https://github.com/EduCrr/chairs",
     },
   ]);
   let items = icons.map((item, k) => (
-    <div className="hab-area" key={k}>
-      <h1>{item.title}</h1>
-      <div class="container">
-        <div class="overlay">
-          <div class="center">
-            <img
-              style={{ height: "128px", width: "128px" }}
-              src={item.icon}
-              alt=""
-            />
+    <Fade bottom cascade duration={900}>
+      <div className="hab-area" key={k}>
+        <h1>{item.title}</h1>
+        <div class="container">
+          <div class="overlay">
+            <div class="center">
+              <img
+                style={{ height: "128px", width: "128px" }}
+                src={item.icon}
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   ));
 
   function handleModal(item) {
@@ -101,31 +104,39 @@ export default function Home() {
   return (
     <HomeArea open={openForm} onClick={() => setOpen(false)}>
       <div className="slider-primary">
-        <div className="slider-text">
-          <div className="inside">
-            <div className="desc">
-              <small>Eduardo Carraro</small>
-              Front-End Developer
+        <Fade bottom cascade duration={900}>
+          <div className="slider-text">
+            <div className="inside">
+              <div className="desc">
+                <small>Eduardo Carraro</small>
+                Front-end Developer
+              </div>
             </div>
           </div>
-        </div>
+        </Fade>
       </div>
-      <Fade left duration={1700}>
+      <Fade left duration={900}>
         <section className="about">
           <div className="right-about">
             <h1>Sobre</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Olá! Meu nome é Eduardo Carraro e gosto de criar novas ideias para
+              o mundo digital. Meu propósito é de se tornar um profissional de
+              excelência, buscando inovar com novas experiências que facilitam a
+              vida do usuário.
+            </p>
+            <p>
+              Atualmente tive a oportunidade de criar alguns sites para
+              clientes. Meu foco agora, é entrar no mercado de trabalho como
+              programador Front-end. Veja logo abaixo algumas tecnologias com às
+              quais tenho trabalhado recentemente.
             </p>
           </div>
         </section>
       </Fade>
 
       <section className="photos">
-        <Fade right cascade duration={1500}>
+        <Fade right cascade duration={900}>
           <div className="photo">
             <img src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
           </div>
@@ -150,26 +161,28 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <div></div>
         </Fade>
       </section>
-      <Fade bottom duration={1500}>
-        <section className="hab">
-          <AliceCarousel
-            mouseTracking
-            items={items}
-            disableDotsControls={true}
-            responsive={responsive}
-            controlsStrategy="alternate"
-          />
-        </section>
-      </Fade>
+      <p style={{ textAlign: "center" }}>
+        <i>
+          "Eu crio e desenvolvo novas experiências que tornam <br />a vida das
+          pessoas mais simples e divertida."
+        </i>
+      </p>
+      <section className="hab">
+        <AliceCarousel
+          mouseTracking
+          items={items}
+          disableDotsControls={true}
+          responsive={responsive}
+          controlsStrategy="alternate"
+        />
+      </section>
       <section className="projects">
         <div className="left-side">
           <h1>Portfólio</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor.
-          </p>
+          <p>Confira alguns dos meus últimos projetos realizados!</p>
         </div>
         <div className="right-side">
           <AliceCarousel
@@ -181,10 +194,10 @@ export default function Home() {
           />
         </div>
       </section>
-      <Fade left duration={1500}>
+      <Fade left duration={900}>
         <section className="contact">
           <div className="contact-area">
-            <h2>Lorem ipsum dolor sit amet,</h2>
+            <h2>Vamos conversar?</h2>
             <button onClick={handleOpenForm}>Entre em contato</button>
           </div>
         </section>
@@ -200,12 +213,12 @@ export default function Home() {
             <input required placeholder="Email" type="email" />
             <input required placeholder="Telefone" type="text" />
             <textarea required rows="5" placeholder="Mensagem"></textarea>
-            <button type="submit">Enviar contato</button>
+            <button type="submit">Enviar Mensagem</button>
           </form>
           <div className="phone">
-            <h2>
+            <h3>
               <WhatsApp /> (54) 99104-6763
-            </h2>
+            </h3>
           </div>
         </div>
       </Bounce>

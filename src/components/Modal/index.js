@@ -6,7 +6,7 @@ export default function Modal({ data, close, open }) {
   return (
     <ModalArea open={open}>
       <div class="modal">
-        <Bounce top when={open}>
+        <Bounce top when={open} spy={true}>
           <div onClick={() => close(false)} className="close-modal">
             <Close />
           </div>
@@ -15,8 +15,12 @@ export default function Modal({ data, close, open }) {
           <p>{data.desc}</p>
           <h4>{data.tools}</h4>
           <div className="btns">
-            <a href="/">Veja Mais</a>
-            <a href="/">GitHub</a>
+            <a target="_blank" href={data.url}>
+              Veja Mais
+            </a>
+            <a target="_blank" href={data.git}>
+              GitHub
+            </a>
           </div>
         </Bounce>
       </div>
