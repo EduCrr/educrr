@@ -55,7 +55,7 @@ export default function Home() {
     {
       title: "Detetive Barros ",
       image: "/assets/barros.png",
-      desc: "Um site institucional para classificar seus serviços prestados. A pedido do cliente, ele informou que gostaria de algo simples e direto, então resolvi criar um site intuitivo de página única com formulário de contato. ",
+      desc: "Um site institucional para classificar seus serviços prestados. O objetivo do cliente era criar um site intuitivo de página única com formulário de contato. ",
       tools: "React, Styled Components, EmailJs.",
       url: "http://barrosdetetive.com.br/",
       git: "https://github.com/EduCrr/barrosdetetive",
@@ -118,10 +118,10 @@ export default function Home() {
           <div className="right-about">
             <h1>Sobre</h1>
             <p>
-              Olá! Meu nome é Eduardo Carraro e gosto de criar novas ideias para
-              o mundo digital. Meu propósito é de se tornar um profissional de
-              excelência, buscando inovar com novas experiências que facilitam a
-              vida do usuário.
+              Olá! Meu nome é Eduardo Eugênio Carraro e gosto de criar novas
+              ideias para o mundo digital. Meu propósito é de se tornar um
+              profissional de excelência, buscando inovar com novas experiências
+              que facilitam a vida do usuário.
             </p>
             <p>
               Atualmente tive a oportunidade de criar alguns sites para

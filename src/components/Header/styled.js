@@ -20,6 +20,11 @@ export const HeaderArea = styled.header`
     .logo {
       flex: 1;
       font-size: 40px;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
     }
   }
   .menu-area {

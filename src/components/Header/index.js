@@ -44,7 +44,9 @@ export default function Header() {
       <HeaderArea className="menu-state" open={open} black={blackHeader}>
         <div id="home"></div>
         <div className="content">
-          <div className="logo">Eduardo</div>
+          <div className="logo">
+            <a href="#home">Eduardo</a>
+          </div>
           <div className="menu">
             <Menu
               onClick={handleMenu}

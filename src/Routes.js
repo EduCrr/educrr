@@ -7,6 +7,9 @@ export default function Routes() {
       <Route exact path="/">
         <Home />
       </Route>
+      <Route path="*">
+        <Home />
+      </Route>
     </Switch>
   );
 }
