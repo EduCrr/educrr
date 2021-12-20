@@ -2,42 +2,6 @@ import styled from "styled-components";
 
 export const HomeArea = styled.div`
   overflow-x: hidden;
-  .slider-primary {
-    height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(
-        rgba(17, 25, 27, 0.1),
-        rgba(17, 25, 27, 1)
-      ),
-      url("/assets/fundo1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    .slider-text {
-      height: inherit;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      .inside {
-        padding: 25px 0px;
-        background-color: #11191b;
-        transition: all ease 0.4s;
-        width: 50%;
-        font-size: 35px;
-        font-weight: bold;
-        text-align: center;
-        .desc {
-          display: flex;
-          flex-direction: column;
-          margin: auto;
-        }
-        small {
-          font-size: 17px;
-        }
-      }
-    }
-  }
 
   .about {
     max-width: 1200px;
@@ -87,7 +51,7 @@ export const HomeArea = styled.div`
         rgba(17, 25, 27, 0.1),
         rgba(17, 25, 27, 1)
       ),
-      url("/assets/fundo4.jpg");
+      url("/assets/fundo6.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -288,12 +252,6 @@ export const HomeArea = styled.div`
     }
   }
   @media (max-width: 375px) {
-    .slider-text {
-      .inside {
-        width: 100% !important;
-        font-size: 30px !important;
-      }
-    }
     .photos {
       .photo {
         width: 100%;
@@ -306,3 +264,43 @@ export const HomeArea = styled.div`
     }
   }
 `;
+
+/*
+.slider-primary {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(
+        rgba(17, 25, 27, 0.1),
+        rgba(17, 25, 27, 1)
+      ),
+      url("/assets/fundo1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .slider-text {
+      height: inherit;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .inside {
+        padding: 25px 0px;
+        background-color: #11191b;
+        transition: all ease 0.4s;
+        width: 50%;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+        .desc {
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+        }
+        small {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+
+*/

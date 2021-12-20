@@ -29,6 +29,7 @@ export default function Header() {
   }, []);
   return (
     <>
+      <div id="home"></div>
       <div
         className="menuBackground"
         style={{

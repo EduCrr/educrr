@@ -8,7 +8,7 @@ import { OpenContext } from "../../OpenContext";
 import Modal from "../../components/Modal";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
-
+import Slider from "../../components/Slider";
 export default function Home() {
   const { setOpen } = useContext(OpenContext);
   const [openForm, setOpenForm] = useState(false);
@@ -111,18 +111,8 @@ export default function Home() {
 
   return (
     <HomeArea open={openForm} onClick={() => setOpen(false)}>
-      <div className="slider-primary">
-        <Fade bottom cascade duration={900}>
-          <div className="slider-text">
-            <div className="inside">
-              <div className="desc">
-                <small>Eduardo Carraro</small>
-                Front-end Developer
-              </div>
-            </div>
-          </div>
-        </Fade>
-      </div>
+      <Slider />
+      <div id="sobre"></div>
       <Fade left duration={900}>
         <section className="about">
           <div className="right-about">
@@ -187,7 +177,7 @@ export default function Home() {
           controlsStrategy="alternate"
         />
       </section>
-      <section className="projects">
+      <section className="projects" id="portfolio">
         <div className="left-side">
           <h1>Portfólio</h1>
           <p>Confira alguns dos meus últimos projetos realizados!</p>
@@ -203,7 +193,7 @@ export default function Home() {
         </div>
       </section>
       <Fade left duration={900}>
-        <section className="contact">
+        <section className="contact" id="contato">
           <div className="contact-area">
             <h2>Vamos conversar?</h2>
             <button onClick={handleOpenForm}>Entre em contato</button>
@@ -234,3 +224,18 @@ export default function Home() {
     </HomeArea>
   );
 }
+
+/*
+<div className="slider-primary">
+        <Fade bottom cascade duration={900}>
+          <div className="slider-text">
+            <div className="inside">
+              <div className="desc">
+                <small>Eduardo Eugênio Carraro</small>
+                Front-end Developer
+              </div>
+            </div>
+          </div>
+        </Fade>
+      </div>
+*/
