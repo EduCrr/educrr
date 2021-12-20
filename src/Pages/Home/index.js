@@ -9,11 +9,17 @@ import Modal from "../../components/Modal";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 import Slider from "../../components/Slider";
+import emailjs from "emailjs-com";
 export default function Home() {
   const { setOpen } = useContext(OpenContext);
   const [openForm, setOpenForm] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modalItem, setModalItem] = useState({});
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [erro, setErro] = useState("");
   const [icons, setIcons] = useState([
     { title: "Conhecimento em:", icon: "/assets/knowledge.png" },
     { title: "Html", icon: "/assets/html.png" },
@@ -65,13 +71,13 @@ export default function Home() {
     <Fade bottom cascade duration={900}>
       <div className="hab-area" key={k}>
         <h1>{item.title}</h1>
-        <div class="container">
-          <div class="overlay">
-            <div class="center">
+        <div className="container">
+          <div className="overlay">
+            <div className="center">
               <img
                 style={{ height: "128px", width: "128px" }}
                 src={item.icon}
-                alt=""
+                alt={item.title}
               />
             </div>
           </div>
@@ -87,7 +93,11 @@ export default function Home() {
 
   let items2 = portfolio.map((item, k) => (
     <div className="port-area" key={k}>
-      <img onClick={() => handleModal(item)} src={item.image} />
+      <img
+        onClick={() => handleModal(item)}
+        src={item.image}
+        alt={item.title}
+      />
     </div>
   ));
 
@@ -107,6 +117,41 @@ export default function Home() {
   function handleOpenForm() {
     setOpenForm(!openForm);
     setOpen(false);
+  }
+  //formulario
+
+  function handleForm(e) {
+    setErro("");
+    e.preventDefault();
+    if (
+      nome.trim() === "" ||
+      email.trim() === "" ||
+      phone.trim() === "" ||
+      message.trim() === ""
+    ) {
+      setErro("Preencha os campos corretamente!");
+      return;
+    }
+    emailjs
+      .sendForm(
+        "service_8cpbo8a",
+        "template_jg032uh",
+        e.target,
+        "user_pFI3Mb96DRORRWn1vgazi"
+      )
+      .then(
+        (result) => {
+          setNome("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+          setErro("");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
   }
 
   return (
@@ -136,13 +181,16 @@ export default function Home() {
       <section className="photos">
         <Fade right cascade duration={900}>
           <div className="photo">
-            <img src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+            <img
+              src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+              alt="Eduardo"
+            />
           </div>
           <div className="photo">
-            <div class="container">
-              <img src="/assets/inovation.jpg" />
-              <div class="overlay">
-                <div class="center">
+            <div className="container">
+              <img src="/assets/inovation.jpg" alt="inovation" />
+              <div className="overlay">
+                <div className="center">
                   <h1>Inovação</h1>
                 </div>
               </div>
@@ -150,10 +198,10 @@ export default function Home() {
           </div>
 
           <div className="photo">
-            <div class="container">
-              <img src="/assets/smoke.jpg" />
-              <div class="overlay">
-                <div class="center">
+            <div className="container">
+              <img src="/assets/smoke.jpg" alt="smoke" />
+              <div className="overlay">
+                <div className="center">
                   <h1>Criatividade</h1>
                 </div>
               </div>
@@ -206,11 +254,39 @@ export default function Home() {
             style={{ fontSize: "35px", cursor: "pointer" }}
             onClick={() => setOpenForm(false)}
           />
-          <form>
-            <input required placeholder="Nome" type="text" />
-            <input required placeholder="Email" type="email" />
-            <input required placeholder="Telefone" type="text" />
-            <textarea required rows="5" placeholder="Mensagem"></textarea>
+          <form onSubmit={handleForm}>
+            <input
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+              placeholder="Nome"
+              type="text"
+              name="name"
+            />
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Email"
+              type="email"
+              name="email"
+            />
+            <input
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              placeholder="Telefone"
+              type="text"
+              name="phone"
+            />
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+              rows="5"
+              placeholder="Mensagem"
+              name="message"
+            ></textarea>
             <button type="submit">Enviar Mensagem</button>
           </form>
           <div className="phone">
@@ -224,18 +300,3 @@ export default function Home() {
     </HomeArea>
   );
 }
-
-/*
-<div className="slider-primary">
-        <Fade bottom cascade duration={900}>
-          <div className="slider-text">
-            <div className="inside">
-              <div className="desc">
-                <small>Eduardo Eugênio Carraro</small>
-                Front-end Developer
-              </div>
-            </div>
-          </div>
-        </Fade>
-      </div>
-*/

@@ -25,7 +25,6 @@ export const HomeArea = styled.div`
       transition: all ease 0.4s !important;
       img {
         height: 550px;
-        object-fit: cover;
         width: 100%;
       }
       .container {
@@ -242,23 +241,13 @@ export const HomeArea = styled.div`
     .photos {
       flex-direction: column;
       .photo {
-        width: 60%;
+        width: auto;
+        height: auto;
       }
     }
     .port-area {
       img {
         object-fit: scale-down !important;
-      }
-    }
-  }
-  @media (max-width: 375px) {
-    .photos {
-      .photo {
-        width: 100%;
-      }
-    }
-    .port-area {
-      img {
         height: auto !important;
       }
     }

@@ -95,13 +95,6 @@ export const SliderArea = styled.div`
   @media (max-width: 768px) {
     .slider-text {
       .inside {
-        width: 70% !important;
-      }
-    }
-  }
-  @media (max-width: 375px) {
-    .slider-text {
-      .inside {
         width: 100% !important;
         font-size: 30px !important;
       }

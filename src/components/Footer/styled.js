@@ -12,7 +12,7 @@ export const FooterArea = styled.footer`
       color: white;
     }
   }
-  @media (max-width: 375px) {
+  @media (max-width: 550px) {
     flex-direction: column;
     margin-bottom: 20px;
   }

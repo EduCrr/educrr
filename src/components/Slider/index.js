@@ -20,10 +20,10 @@ export default function Slider() {
   ]);
   return (
     <SliderArea>
-      <div class="slideshow">
+      <div className="slideshow">
         {sliders.map((item, k) => (
-          <div class="slideshow-item" key={k}>
-            <img src={item.img} alt="Photo" />
+          <div className="slideshow-item" key={k}>
+            <img src={item.img} alt="Photo" alt="" />
             <div className="slider-text">
               <div className="inside">
                 <div className="desc">
