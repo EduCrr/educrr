@@ -21,8 +21,15 @@ export const ModalArea = styled.div`
     padding: 6rem;
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    img {
+      width: auto;
+      height: auto;
+    }
     h4 {
       margin-bottom: 45px;
+    }
+    p {
+      max-width: 900px;
     }
     .btns {
       a {
@@ -40,7 +47,7 @@ export const ModalArea = styled.div`
     .close-modal {
       position: absolute;
       top: 1.2rem;
-      right: 2rem;
+      right: 1.5rem;
       font-size: 5rem;
       color: #333;
       cursor: pointer;
@@ -65,6 +72,33 @@ export const ModalArea = styled.div`
     backdrop-filter: blur(5px);
     transition: all ease 0.4s;
     opacity: ${(props) => (props.open ? "1" : "0")};
-    z-index: ${(props) => (props.open ? "5" : "-100")};
+    z-index: ${(props) => (props.open ? "1000" : "-100")};
+  }
+  @media (max-width: 450px) {
+    .btns {
+      display: flex;
+      flex-direction: column;
+      a {
+        margin: 20px 0px;
+        text-align: center;
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    .modal {
+      img {
+        width: 100%;
+      }
+    }
+    .close-modal {
+      top: 6.2rem !important;
+      right: 5rem !important;
+    }
+  }
+  @media (max-width: 768px) {
+    .modal {
+      width: 90% !important;
+      height: auto !important;
+    }
   }
 `;

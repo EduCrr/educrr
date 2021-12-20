@@ -12,4 +12,8 @@ export const FooterArea = styled.footer`
       color: white;
     }
   }
+  @media (max-width: 375px) {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
 `;

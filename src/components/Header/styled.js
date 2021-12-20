@@ -1,16 +1,21 @@
 import styled from "styled-components";
 
 export const HeaderArea = styled.header`
-  width: 1200px;
-  margin: auto;
   .content {
-    margin-top: 35px;
     position: fixed;
-    width: inherit;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 99;
+    padding: "10px 0px";
+    background-color: transparent;
+    transition: all ease 0.4s;
+    max-width: 1200px;
+    margin: ${(props) => (props.black ? "1rem auto" : "2rem auto")};
 
     .logo {
       flex: 1;
@@ -44,6 +49,19 @@ export const HeaderArea = styled.header`
     a {
       margin: 0px 10px;
       color: white;
+    }
+  }
+  @media (max-width: 1204px) {
+    .content {
+      padding: 0px 20px;
+    }
+    .menu-area {
+      width: 100%;
+    }
+  }
+  @media (max-width: 375px) {
+    .menu-area {
+      width: 100%;
     }
   }
 `;

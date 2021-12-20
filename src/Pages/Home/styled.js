@@ -22,7 +22,6 @@ export const HomeArea = styled.div`
       .inside {
         padding: 25px 0px;
         background-color: #11191b;
-        opacity: 0.9 !important;
         transition: all ease 0.4s;
         width: 50%;
         font-size: 35px;
@@ -184,9 +183,8 @@ export const HomeArea = styled.div`
   }
 
   .inputs-email {
-    width: 35%;
     z-index: ${(props) => (props.open ? "999" : "-1")};
-
+    width: 100%;
     input,
     textarea {
       font-family: "Readex Pro", sans-serif;
@@ -203,8 +201,12 @@ export const HomeArea = styled.div`
         color: white;
       }
       &:hover {
-        background-color: #11191b;
-        border: 2px solid white;
+        background: rgb(17, 25, 27);
+        background: linear-gradient(
+          18deg,
+          rgba(17, 25, 27, 1) 39%,
+          rgba(24, 32, 34, 1) 66%
+        );
       }
     }
     textarea {
@@ -219,6 +221,14 @@ export const HomeArea = styled.div`
     }
     button {
       background-color: #182022;
+      &:hover {
+        background: rgb(17, 25, 27);
+        background: linear-gradient(
+          18deg,
+          rgba(17, 25, 27, 1) 39%,
+          rgba(24, 32, 34, 1) 66%
+        );
+      }
     }
   }
   .phone,
@@ -230,6 +240,69 @@ export const HomeArea = styled.div`
     margin: 0px 10px;
     svg {
       font-size: 30px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .conent .about {
+      padding: 0px 15px;
+      .right-about {
+        width: 100%;
+      }
+    }
+    .hab-area,
+    .hab {
+      height: 50vh;
+    }
+    .projects {
+      flex-direction: column;
+      .left-side {
+        width: auto;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .right-side {
+        width: 100%;
+      }
+    }
+    .contact {
+      height: 50vh;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .right-about {
+      padding: 0px 20px;
+      width: auto !important ;
+    }
+    .photos {
+      flex-direction: column;
+      .photo {
+        width: 60%;
+      }
+    }
+    .port-area {
+      img {
+        object-fit: scale-down !important;
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    .slider-text {
+      .inside {
+        width: 100% !important;
+        font-size: 30px !important;
+      }
+    }
+    .photos {
+      .photo {
+        width: 100%;
+      }
+    }
+    .port-area {
+      img {
+        height: auto !important;
+      }
     }
   }
 `;
