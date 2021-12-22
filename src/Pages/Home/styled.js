@@ -215,7 +215,7 @@ export const HomeArea = styled.div`
     }
     .hab-area,
     .hab {
-      height: 50vh;
+      height: 70vh;
     }
     .projects {
       flex-direction: column;
@@ -229,7 +229,7 @@ export const HomeArea = styled.div`
       }
     }
     .contact {
-      height: 50vh;
+      height: 70vh;
     }
   }
 

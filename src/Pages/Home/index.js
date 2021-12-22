@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { HomeArea } from "./styled";
 import AliceCarousel from "react-alice-carousel";
 import WhatsApp from "@material-ui/icons/WhatsApp";
@@ -10,6 +10,10 @@ import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 import Slider from "../../components/Slider";
 import emailjs from "emailjs-com";
+import InputMask from "react-input-mask";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 export default function Home() {
   const { setOpen } = useContext(OpenContext);
   const [openForm, setOpenForm] = useState(false);
@@ -19,7 +23,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-  const [erro, setErro] = useState("");
+  const [status, setStatus] = useState("");
   const [icons, setIcons] = useState([
     { title: "Conhecimento em:", icon: "/assets/knowledge.png" },
     { title: "Html", icon: "/assets/html.png" },
@@ -37,7 +41,7 @@ export default function Home() {
     {
       title: "E-Movie",
       image: "/assets/emovie.png",
-      desc: "Um site da web para visualizar dados de filmes e series, utlizando informações da (TMDB) API. Visualize seus principais artistas de cada filme e detalhes sobre sua sinopse. Crie e salve novas listas na área de favoritos e muito mais.",
+      desc: "Um site da web para visualizar dados de filmes e séries, utlizando informações da (TMDB) API. Visualize os principais atores de cada filme e detalhes sobre sua sinopse. Salve seus filmes e séries prediletos na página favoritos e muito mais.",
       tools: "React, Styled Components, API, Reducer, Context.",
       url: "http://edumoviee.epizy.com/",
       git: "https://github.com/EduCrr/movies",
@@ -45,7 +49,7 @@ export default function Home() {
     {
       title: "House",
       image: "/assets/house.png",
-      desc: "Um site da web para visualizar casas e suas informações. Visualize casas por estados selecionados e uma área de login para o administrador ter acesso para editar, deletar e criar uma nova casa. Todos os dados vindo do Firebase.",
+      desc: "Um site da web para visualizar casas e suas informações. Visualize casas por estados selecionados e uma área de login para o administrador ter acesso para editar, deletar e criar uma nova casa. Todos os dados vindos do Firebase.",
       tools: "React, Firebase, Styled Components, Context.",
       url: "http://eduhouse.epizy.com/",
       git: "https://github.com/EduCrr/house",
@@ -53,7 +57,7 @@ export default function Home() {
     {
       title: "Chair",
       image: "/assets/chair.png",
-      desc: "Um site da web para adicionar produtos para o seu carrinho de compras. Visualize informações de cada produto, e uma área para ver os items no carrinho. Todos os dados vindo do Firebase.",
+      desc: "Um site da web para adicionar produtos para o seu carrinho de compras. Visualize informações de cada produto, e uma página para ver os items adicionados no carrinho. Todos os dados vindos do Firebase.",
       tools: "React, Firebase, Styled Components, Context.",
       url: "http://educhair.epizy.com/",
       git: "https://github.com/EduCrr/chairs",
@@ -61,7 +65,7 @@ export default function Home() {
     {
       title: "Detetive Barros ",
       image: "/assets/barros.png",
-      desc: "Um site institucional para classificar seus serviços prestados. O objetivo do cliente era criar um site intuitivo de página única com formulário de contato. ",
+      desc: "Um site institucional para especificar seus serviços prestados. O objetivo do cliente era criar um site intuitivo de página única com formulário de contato.  ",
       tools: "React, Styled Components, EmailJs.",
       url: "http://barrosdetetive.com.br/",
       git: "https://github.com/EduCrr/barrosdetetive",
@@ -121,17 +125,9 @@ export default function Home() {
   //formulario
 
   function handleForm(e) {
-    setErro("");
+    setStatus("");
     e.preventDefault();
-    if (
-      nome.trim() === "" ||
-      email.trim() === "" ||
-      phone.trim() === "" ||
-      message.trim() === ""
-    ) {
-      setErro("Preencha os campos corretamente!");
-      return;
-    }
+    if (!validate()) return;
     emailjs
       .sendForm(
         "service_8cpbo8a",
@@ -141,11 +137,12 @@ export default function Home() {
       )
       .then(
         (result) => {
+          toast.success("Email enviado com sucesso!");
           setNome("");
           setEmail("");
           setPhone("");
           setMessage("");
-          setErro("");
+          setStatus("");
         },
         (error) => {
           console.log(error.text);
@@ -154,149 +151,162 @@ export default function Home() {
     e.target.reset();
   }
 
+  function validate() {
+    if (!nome) return setStatus("Preencha o campo nome");
+    if (!email) return setStatus("Preencha o campo Email");
+    if (!phone) return setStatus("Preencha o campo Telefone");
+    if (!message) return setStatus("Preencha o campo Mensagem");
+
+    return true;
+  }
   return (
-    <HomeArea open={openForm} onClick={() => setOpen(false)}>
-      <Slider />
-      <div id="sobre"></div>
-      <Fade left duration={900}>
-        <section className="about">
-          <div className="right-about">
-            <h1>Sobre</h1>
-            <p>
-              Olá! Meu nome é Eduardo Eugênio Carraro e gosto de criar novas
-              ideias para o mundo digital. Meu propósito é de se tornar um
-              profissional de excelência, buscando inovar com novas experiências
-              que facilitam a vida do usuário.
-            </p>
-            <p>
-              Atualmente tive a oportunidade de criar alguns sites para
-              clientes. Meu foco agora, é entrar no mercado de trabalho como
-              programador Front-end. Veja logo abaixo algumas tecnologias com às
-              quais tenho trabalhado recentemente.
-            </p>
-          </div>
-        </section>
-      </Fade>
-
-      <section className="photos">
-        <Fade right cascade duration={900}>
-          <div className="photo">
-            <img
-              src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              alt="Eduardo"
-            />
-          </div>
-          <div className="photo">
-            <div className="container">
-              <img src="/assets/inovation.jpg" alt="inovation" />
-              <div className="overlay">
-                <div className="center">
-                  <h1>Inovação</h1>
-                </div>
-              </div>
+    <>
+      <ToastContainer autoClose={3000} />
+      <HomeArea open={openForm} onClick={() => setOpen(false)}>
+        <Slider />
+        <div id="sobre"></div>
+        <Fade left duration={900}>
+          <section className="about">
+            <div className="right-about">
+              <h1>Sobre</h1>
+              <p>
+                Olá! Meu nome é Eduardo Eugênio Carraro e gosto de criar novas
+                ideias para o mundo digital. Meu propósito é de se tornar um
+                profissional de excelência, buscando inovar com novas
+                experiências que facilitam a vida do usuário.
+              </p>
+              <p>
+                Atualmente tive a oportunidade de criar alguns projetos para
+                clientes, visando na criação de sites objetivos e inovadores.
+                Meu foco agora, é entrar no mercado de trabalho como programador
+                Front-end. Veja logo abaixo algumas tecnologias com às quais
+                tenho trabalhado recentemente.
+              </p>
             </div>
-          </div>
-
-          <div className="photo">
-            <div className="container">
-              <img src="/assets/smoke.jpg" alt="smoke" />
-              <div className="overlay">
-                <div className="center">
-                  <h1>Criatividade</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div></div>
+          </section>
         </Fade>
-      </section>
-      <p style={{ textAlign: "center" }}>
-        <i>
-          "Eu crio e desenvolvo novas experiências que tornam <br />a vida das
-          pessoas mais simples e divertida."
-        </i>
-      </p>
-      <section className="hab">
-        <AliceCarousel
-          mouseTracking
-          items={items}
-          disableDotsControls={true}
-          responsive={responsive}
-          controlsStrategy="alternate"
-        />
-      </section>
-      <section className="projects" id="portfolio">
-        <div className="left-side">
-          <h1>Portfólio</h1>
-          <p>Confira alguns dos meus últimos projetos realizados!</p>
-        </div>
-        <div className="right-side">
+
+        <section className="photos">
+          <Fade right cascade duration={900}>
+            <div className="photo">
+              <img
+                src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                alt="Eduardo"
+              />
+            </div>
+            <div className="photo">
+              <div className="container">
+                <img src="/assets/inovation.jpg" alt="inovation" />
+                <div className="overlay">
+                  <div className="center">
+                    <h1>Inovação</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="photo">
+              <div className="container">
+                <img src="/assets/smoke.jpg" alt="smoke" />
+                <div className="overlay">
+                  <div className="center">
+                    <h1>Criatividade</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div></div>
+          </Fade>
+        </section>
+        <p style={{ textAlign: "center" }}>
+          <i>
+            "Eu crio e desenvolvo novas experiências que tornam <br />a vida das
+            pessoas mais simples e divertida."
+          </i>
+        </p>
+        <section className="hab">
           <AliceCarousel
             mouseTracking
-            items={items2}
+            items={items}
             disableDotsControls={true}
-            responsive={responsive2}
+            responsive={responsive}
             controlsStrategy="alternate"
           />
-        </div>
-      </section>
-      <Fade left duration={900}>
-        <section className="contact" id="contato">
-          <div className="contact-area">
-            <h2>Vamos conversar?</h2>
-            <button onClick={handleOpenForm}>Entre em contato</button>
+        </section>
+        <section className="projects" id="portfolio">
+          <div className="left-side">
+            <h1>Portfólio</h1>
+            <p>Confira alguns dos meus últimos projetos realizados!</p>
+          </div>
+          <div className="right-side">
+            <AliceCarousel
+              mouseTracking
+              items={items2}
+              disableDotsControls={true}
+              responsive={responsive2}
+              controlsStrategy="alternate"
+            />
           </div>
         </section>
-      </Fade>
-      <Bounce right when={openForm}>
-        <div className="show-infos inputs-email">
-          <Close
-            style={{ fontSize: "35px", cursor: "pointer" }}
-            onClick={() => setOpenForm(false)}
-          />
-          <form onSubmit={handleForm}>
-            <input
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
-              placeholder="Nome"
-              type="text"
-              name="name"
+        <Fade left duration={900}>
+          <section className="contact" id="contato">
+            <div className="contact-area">
+              <h2>Vamos conversar?</h2>
+              <button onClick={handleOpenForm}>Entre em contato</button>
+            </div>
+          </section>
+        </Fade>
+        <Bounce right when={openForm}>
+          <div className="show-infos inputs-email">
+            <Close
+              style={{ fontSize: "35px", cursor: "pointer" }}
+              onClick={() => setOpenForm(false)}
             />
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Email"
-              type="email"
-              name="email"
-            />
-            <input
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-              placeholder="Telefone"
-              type="text"
-              name="phone"
-            />
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-              rows="5"
-              placeholder="Mensagem"
-              name="message"
-            ></textarea>
-            <button type="submit">Enviar Mensagem</button>
-          </form>
-          <div className="phone">
-            <h3>
-              <WhatsApp /> (54) 99104-6763
-            </h3>
+            {status !== "" && <h4>{status}</h4>}
+            <form onSubmit={handleForm}>
+              <input
+                required
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                placeholder="Nome"
+                type="text"
+                name="name"
+              />
+              <input
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                type="email"
+                name="email"
+              />
+              <InputMask
+                mask="(99) 99999-9999"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Telefone"
+                type="text"
+                name="phone"
+              />
+              <textarea
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                rows="5"
+                placeholder="Mensagem"
+                name="message"
+              ></textarea>
+              <button type="submit">Enviar Mensagem</button>
+            </form>
+            <div className="phone">
+              <h3>
+                <WhatsApp /> (54) 99104-6763
+              </h3>
+            </div>
           </div>
-        </div>
-      </Bounce>
-      <Modal data={modalItem} close={setOpenModal} open={openModal} />
-    </HomeArea>
+        </Bounce>
+        <Modal data={modalItem} close={setOpenModal} open={openModal} />
+      </HomeArea>
+    </>
   );
 }
