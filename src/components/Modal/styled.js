@@ -46,7 +46,7 @@ export const ModalArea = styled.div`
     }
     .close-modal {
       position: absolute;
-      top: 1.2rem;
+      top: 0rem;
       right: 1.5rem;
       font-size: 5rem;
       color: #333;
@@ -74,6 +74,24 @@ export const ModalArea = styled.div`
     opacity: ${(props) => (props.open ? "1" : "0")};
     z-index: ${(props) => (props.open ? "1000" : "-100")};
   }
+
+  @media (max-width: 1024px) {
+    .modal {
+      img {
+        width: 100%;
+      }
+    }
+    .close-modal {
+      top: 2.2rem !important;
+      right: 5rem !important;
+    }
+  }
+  @media (max-width: 768px) {
+    .modal {
+      width: 90% !important;
+      height: auto !important;
+    }
+  }
   @media (max-width: 450px) {
     .btns {
       display: flex;
@@ -83,22 +101,8 @@ export const ModalArea = styled.div`
         text-align: center;
       }
     }
-  }
-  @media (max-width: 1024px) {
-    .modal {
-      img {
-        width: 100%;
-      }
-    }
     .close-modal {
-      top: 6.2rem !important;
-      right: 5rem !important;
-    }
-  }
-  @media (max-width: 768px) {
-    .modal {
-      width: 90% !important;
-      height: auto !important;
+      top: 4rem !important;
     }
   }
 `;
