@@ -13,23 +13,11 @@ export const SkillArea = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .alice-carousel {
-      max-width: 1200px !important;
-    }
-    .alice-carousel .alice-carousel__next-btn-item,
-    .alice-carousel__prev-btn-item {
-      display: none !important;
-    }
   }
 
   .hab-area {
     background-color: #11191b;
-    display: flex;
-    justify-content: flex-start;
-    align-items: end;
+
     height: 90vh;
     width: 100%;
     transform: scale(0.9);

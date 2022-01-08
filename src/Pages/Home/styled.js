@@ -24,7 +24,7 @@ export const HomeArea = styled.div`
       transform: scale(0.9) !important;
       transition: all ease 0.4s !important;
       img {
-        height: 550px;
+        height: 530px;
         width: 100%;
       }
       .container {
@@ -49,18 +49,20 @@ export const HomeArea = styled.div`
         width: 100%;
       }
     }
+    .photos {
+      flex-direction: column;
+      .photo {
+        width: 100%;
+        img {
+          height: auto;
+        }
+      }
+    }
   }
   @media (max-width: 768px) {
     .right-about {
       padding: 0px 20px;
       width: auto !important ;
-    }
-    .photos {
-      flex-direction: column;
-      .photo {
-        width: auto;
-        height: auto;
-      }
     }
   }
 `;

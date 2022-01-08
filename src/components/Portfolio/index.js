@@ -15,6 +15,14 @@ export default function Portfolio() {
       git: "https://github.com/EduCrr/movies",
     },
     {
+      title: "E-Games",
+      image: "/assets/egames.png",
+      desc: "Um site da web para visualizar dados de games, utlizando informações da (RAWG) API. Visualize os seus jogos favoritos com detalhes sobre sua história, troféus e jogos da mesma série.",
+      tools: "React, Styled Components, API",
+      url: "http://edugames.epizy.com/",
+      git: "https://github.com/EduCrr/egames",
+    },
+    {
       title: "House",
       image: "/assets/house.png",
       desc: "Um site da web para visualizar casas e suas informações. Visualize casas por estados selecionados e uma área de login para o administrador ter acesso para editar, deletar e criar uma nova casa. Todos os dados vindos do Firebase.",

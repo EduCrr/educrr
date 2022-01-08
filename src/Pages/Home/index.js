@@ -36,10 +36,7 @@ export default function Home() {
         <section className="photos">
           <Fade right cascade duration={900}>
             <div className="photo">
-              <img
-                src="https://images.unsplash.com/photo-1578390432942-d323db577792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-                alt="Eduardo"
-              />
+              <img src="/assets/eduardo.jpg" alt="Eduardo" />
             </div>
             <div className="photo">
               <div className="container">
@@ -65,7 +62,7 @@ export default function Home() {
             <div></div>
           </Fade>
         </section>
-        <p style={{ textAlign: "center" }}>
+        <p style={{ textAlign: "center", marginTop: "-20px" }}>
           <i>
             "Eu crio e desenvolvo novas experiências que tornam <br />a vida das
             pessoas mais simples e divertida."

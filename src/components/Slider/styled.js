@@ -3,23 +3,20 @@ import styled from "styled-components";
 export const SliderArea = styled.div`
   .slideshow {
     width: 100%;
+    background-position: center;
+    background-size: cover;
     height: 100vh;
-    position: relative;
-    overflow: hidden;
+    animation: myAnim 30s ease 0s infinite alternate-reverse forwards;
+    background-image: url("/assets/fundo7.jpg");
   }
 
-  .slideshow-item {
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    animation: cyclesImages 31s infinite;
-    opacity: 0;
+  @keyframes myAnim {
+    0% {
+      background-position: 50% 100%;
+    }
 
-    img {
-      background-image: linear-gradient(
-        rgba(17, 25, 27, 0.1),
-        rgba(17, 25, 27, 1)
-      ) !important;
+    100% {
+      background-position: 50% 0%;
     }
   }
   .slider-text {
@@ -52,46 +49,7 @@ export const SliderArea = styled.div`
       }
     }
   }
-  .slideshow-item img {
-    width: 100%;
-    height: 100%;
-    animation: zoom 31s infinite;
-    object-fit: cover;
-    img {
-      background-image: linear-gradient(
-        rgba(17, 25, 27, 0.1),
-        rgba(17, 25, 27, 1)
-      ) !important;
-    }
-  }
-  .slideshow-item:nth-child(1),
-  .slideshow-item:nth-child(1) img {
-    animation-delay: 0s;
-  }
-  .slideshow-item:nth-child(2),
-  .slideshow-item:nth-child(2) img {
-    animation-delay: 10s;
-  }
-  .slideshow-item:nth-child(3),
-  .slideshow-item:nth-child(3) img {
-    animation-delay: 20s;
-  }
 
-  @keyframes cyclesImages {
-    25% {
-      opacity: 1;
-    }
-
-    40% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes zoom {
-    100% {
-      transform: scale(1.4);
-    }
-  }
   @media (max-width: 768px) {
     .slider-text {
       .inside {
